@@ -12,7 +12,7 @@ namespace IVCCRMApi
 		public DbSet<Classroom>	Classrooms { get; set; }
 		public DbSet<Order> Orders { get; set; }
 		public DbSet<User> Users { get; set; }
-
+		
 		public IVCContext() 
 		{ 
 			Database.EnsureCreated();
