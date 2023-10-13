@@ -7,6 +7,15 @@ namespace IVCCRMApi.Controllers
     [Route("equipment")]
     public class EquipmentController : ControllerBase
     {
+        [HttpPost]
+        public ActionResult Add(Equipment equipment)
+        {
+            IVCContext db = new IVCContext();
+            db.Equipments.Add(equipment);
+            db.SaveChanges();
+            return Ok(equipment);
+        }
+
         [HttpGet]
         [Route("all")]
         public ActionResult All()
@@ -14,6 +23,5 @@ namespace IVCCRMApi.Controllers
             IVCContext db = new IVCContext();
             return Ok(db.Equipments);
         }
-      
     }
 }
