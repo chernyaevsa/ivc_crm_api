@@ -1,6 +1,19 @@
-﻿namespace IVCCRMApi.Controllers
+﻿using IVCCRMApi.Models;
+using Microsoft.AspNetCore.Mvc;
+
+namespace IVCCRMApi.Controllers
 {
-    public class EquipmentController
+    [ApiController]
+    [Route("equipment")]
+    public class EquipmentController : ControllerBase
     {
+        [HttpPost]
+        public ActionResult Add(Equipment equipment)
+        {
+            IVCContext db = new IVCContext();
+            db.Equipments.Add(equipment);
+            db.SaveChanges();
+            return Ok(equipment);
+        }
     }
 }
