@@ -35,7 +35,13 @@ namespace IVCCRMApi.Controllers
 			db.SaveChanges();
 			return Ok(user);
 		}
-
+		[HttpGet]
+        [Route("get")]
+        public IActionResult All() 
+		{
+            IVCContext db = new IVCContext();
+            return Ok(db.Users);
+        }
 		
 
 	}
