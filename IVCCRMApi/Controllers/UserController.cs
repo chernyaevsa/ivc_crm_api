@@ -36,7 +36,7 @@ namespace IVCCRMApi.Controllers
 			return Ok(user);
 		}
 		[HttpGet]
-        [Route("get")]
+        [Route("all")]
         public IActionResult All() 
 		{
             IVCContext db = new IVCContext();
