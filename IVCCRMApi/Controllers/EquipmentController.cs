@@ -23,5 +23,15 @@ namespace IVCCRMApi.Controllers
             IVCContext db = new IVCContext();
             return Ok(db.Equipments);
         }
+
+        [HttpGet]
+        public ActionResult Get(int id)
+        {
+            IVCContext db = new IVCContext();
+            Equipment? eqp = db.Equipments.FirstOrDefault(u => u.Id == id);
+            if (eqp == null) return NotFound();
+            return Ok();
+        }
+
     }
 }
