@@ -9,7 +9,8 @@ namespace IVCCRMApi.Controllers
     {
 
         [HttpGet]
-        public IActionResult GetList()
+        [Route("all")]
+        public IActionResult All()
         {
             IVCContext db = new IVCContext();
             return Ok(db.Classrooms);
