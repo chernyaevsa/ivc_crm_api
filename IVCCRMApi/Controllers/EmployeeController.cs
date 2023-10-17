@@ -23,11 +23,15 @@ namespace IVCCRMApi.Controllers
 			return Ok();	
 		}
 
-		[HttpPost]
-		public ActionResult Add(Employee employee)
+		[HttpDelete]
+        [Route("all")]
+        public ActionResult Delete(int id) 
 		{
 			IVCContext db = new IVCContext();
-			db.Employees.Add(employee);
+			Employee? employee = db.Employees.FirstOrDefault(e => e.Id == id);
+			if (employee == null)
+				return NotFound();
+			db.Employees.Remove(employee);
 			db.SaveChanges();
 			return Ok(employee);
 		}
