@@ -17,7 +17,7 @@ namespace IVCCRMApi.Controllers
             return Ok(db.Classrooms);
         }
         [HttpDelete]
-        [Route("all")]
+        [Route("{id}")]
         public ActionResult Delete(int id)
         {
             IVCContext db = new IVCContext();
@@ -28,5 +28,17 @@ namespace IVCCRMApi.Controllers
             db.SaveChanges();
             return Ok();
         }
+
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult Get(int id)
+        {
+            IVCContext db = new IVCContext();
+            Classroom? classroom = db.Classrooms.FirstOrDefault(e => e.Id == id);
+            if (classroom == null)
+                return NotFound();
+            return Ok(classroom);
+        }
+
     }
 }
