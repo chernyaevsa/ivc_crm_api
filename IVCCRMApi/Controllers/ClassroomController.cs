@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace IVCCRMApi.Controllers
 {
+ 
+    
+
+ 
     [ApiController]
     [Route("classroom")]
     public class ClassroomContoller : ControllerBase
@@ -37,6 +41,14 @@ namespace IVCCRMApi.Controllers
             Classroom? classroom = db.Classrooms.FirstOrDefault(e => e.Id == id);
             if (classroom == null)
                 return NotFound();
+            return Ok(classroom);
+        }
+        [HttpPost]   
+        public ActionResult Add(Classroom classroom)
+        {
+            IVCContext db = new IVCContext();
+            db.Classrooms.Add(classroom);
+            db.SaveChanges();
             return Ok(classroom);
         }
 
